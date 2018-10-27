@@ -10,8 +10,22 @@ body{
     background-color: #000;
     color: orange;
     font-family: 'Inconsolata', monospace;
+    font-size: small;
 }
 
 #cmd{
     font-weight: bold;
+}
+
+input{
+    border: none;
+    background-color: transparent;
+    color:orange;
+    caret-color: transparent;
+    font-family: 'Inconsolata', monospace;
+    font-size: small;
+}
+
+*:focus {
+    outline: none;
 }

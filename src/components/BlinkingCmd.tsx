@@ -3,8 +3,9 @@ import {setInterval} from "timers";
 import Timeout = NodeJS.Timeout;
 
 interface BlinkingCmdState {
-    content : string
-    interval : Timeout
+    content : string,
+    interval : Timeout,
+    _isMounted : boolean
 }
 
 export default class BlinkingCmd extends React.Component <any, BlinkingCmdState> {
@@ -13,19 +14,23 @@ export default class BlinkingCmd extends React.Component <any, BlinkingCmdState>
         super(props);
         this.state = {
             content: '_',
-            interval : this.letItBlink()
+            interval : this.letItBlink(),
+            _isMounted : false
         };
     }
 
     letItBlink(){
         let interval = setInterval(() => {
             let nextState = (this.state.content==='_'?'':'_');
-            this.setState({content : nextState});
+            this.state._isMounted && this.setState({content : nextState});
         }, 500);
         return interval
     }
 
     componentWillUnmount(){
+        this.setState({
+            _isMounted: false
+        })
         clearInterval(this.state.interval)
     }
 
