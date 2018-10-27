@@ -1,9 +1,11 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
+import "./main.css";
 
-import { Hello } from "./components/Hello";
+
+import {Prompt} from "./components/Prompt";
 
 ReactDOM.render(
-    <Hello compiler="TypeScript" framework="React" />,
+    <Prompt user="visitor" currentPath="slip-chaussettes.io"/>,
     document.getElementById("root")
 );
